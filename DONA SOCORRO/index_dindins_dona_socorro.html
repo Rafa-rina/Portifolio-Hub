@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dindins Dona Socorro</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #fff7fb;
+      color: #4a0030;
+    }
+
+    header {
+      width: 100%;
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(255, 84, 170, 0.78), rgba(255, 84, 170, 0.78)),
+        url("Pattern (1).png");
+      background-size: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 8%;
+      text-align: center;
+    }
+
+    .hero {
+      background: rgba(255, 255, 255, 0.92);
+      padding: 45px;
+      border-radius: 30px;
+      max-width: 900px;
+      box-shadow: 0 15px 40px rgba(80, 0, 50, 0.25);
+    }
+
+    .hero img {
+      width: 260px;
+      max-width: 85%;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      color: #8a003d;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .botao {
+      display: inline-block;
+      background: #8a003d;
+      color: white;
+      padding: 15px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .botao:hover {
+      background: #ff4fa3;
+      transform: scale(1.05);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #8a003d;
+      padding: 15px 8%;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #ffd84d;
+    }
+
+    section {
+      padding: 70px 8%;
+    }
+
+    .titulo {
+      text-align: center;
+      font-size: 38px;
+      color: #8a003d;
+      margin-bottom: 20px;
+    }
+
+    .subtitulo {
+      text-align: center;
+      max-width: 850px;
+      margin: 0 auto 45px;
+      line-height: 1.7;
+      font-size: 18px;
+      color: #5e1741;
+    }
+
+    .sobre {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .sobre img {
+      width: 100%;
+      border-radius: 25px;
+      box-shadow: 0 10px 25px rgba(80, 0, 50, 0.20);
+    }
+
+    .sobre-texto {
+      background: white;
+      padding: 35px;
+      border-radius: 25px;
+      box-shadow: 0 8px 25px rgba(80, 0, 50, 0.12);
+      line-height: 1.8;
+      font-size: 18px;
+    }
+
+    .diferenciais {
+      background: #fff;
+    }
+
+    .cards-diferenciais {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      margin-top: 35px;
+    }
+
+    .card-dif {
+      background: #fff0f7;
+      border-radius: 22px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 8px 22px rgba(80, 0, 50, 0.12);
+      transition: 0.3s;
+    }
+
+    .card-dif:hover {
+      transform: translateY(-8px);
+    }
+
+    .card-dif h3 {
+      color: #8a003d;
+      margin-bottom: 12px;
+      font-size: 24px;
+    }
+
+    .sabores {
+      background: #fff7fb;
+    }
+
+    .grid-sabores {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(80, 0, 50, 0.15);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .card-conteudo {
+      padding: 22px;
+    }
+
+    .card h3 {
+      color: #8a003d;
+      font-size: 23px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      line-height: 1.6;
+      color: #5e1741;
+    }
+
+    .franquia {
+      background:
+        linear-gradient(rgba(255, 216, 77, 0.88), rgba(255, 216, 77, 0.88)),
+        url("Pattern (2).png");
+      background-size: 350px;
+      text-align: center;
+    }
+
+    .franquia-box {
+      background: white;
+      max-width: 850px;
+      margin: auto;
+      padding: 40px;
+      border-radius: 30px;
+      box-shadow: 0 12px 35px rgba(80, 0, 50, 0.20);
+    }
+
+    .franquia-box ul {
+      list-style: none;
+      margin: 25px 0;
+      font-size: 19px;
+      line-height: 2;
+    }
+
+    .franquia-box li::before {
+      content: "💗 ";
+    }
+
+    .galeria {
+      background: white;
+    }
+
+    .grid-galeria {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-galeria img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+
+    .grid-galeria img:hover {
+      transform: scale(1.03);
+    }
+
+    .contato {
+      background: #8a003d;
+      color: white;
+      text-align: center;
+    }
+
+    .contato .titulo {
+      color: white;
+    }
+
+    .contato p {
+      font-size: 22px;
+      line-height: 1.8;
+    }
+
+    footer {
+      background: #4a0030;
+      color: white;
+      text-align: center;
+      padding: 22px;
+    }
+
+    @media (max-width: 1000px) {
+      .grid-sabores {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cards-diferenciais {
+        grid-template-columns: 1fr;
+      }
+
+      .sobre {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-galeria {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .grid-sabores,
+      .grid-galeria {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 55px 6%;
+      }
+
+      .titulo {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header id="inicio">
+    <div class="hero">
+      <img src="Logotipo - marca d_agua.png" alt="Logotipo Dindins Dona Socorro">
+      <h1>Dindins Dona Socorro</h1>
+      <p>
+        Geladinhos gourmet artesanais, feitos com qualidade, carinho e sabores que despertam memória afetiva desde 1994.
+      </p>
+      <a href="#sabores" class="botao">Conheça nossos sabores</a>
+    </div>
+  </header>
+
+  <nav>
+    <a href="../index.html" style="color: #ffd84d; font-weight: bold; text-decoration: none;">← Voltar ao Portfólio</a>
+    <a href="#inicio">Início</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#sabores">Sabores</a>
+    <a href="#franquia">Franquia</a>
+    <a href="#contato">Contato</a>
+    <a href="../assets/documentos/Dona socorro.pdf" target="_blank" style="color: #ffd84d; font-weight: bold; text-decoration: none;">📄 Relatório</a>
+  </nav>
+
+  <section id="sobre">
+    <h2 class="titulo">Sobre a Empresa</h2>
+    <p class="subtitulo">
+      A Dindins Dona Socorro é uma marca tradicional no segmento de gelados artesanais, reconhecida pela qualidade dos produtos,
+      sabores diferenciados e experiência afetiva proporcionada aos consumidores.
+    </p>
+
+    <div class="sobre">
+      <img src="Coco com Abacaxi 2.jpg" alt="Dindins Dona Socorro com frutas tropicais">
+
+      <div class="sobre-texto">
+        <p>
+          Estamos no mercado desde 1994 com a visão empreendedora da matriarca Dona Socorro.
+          A marca se tornou referência em dindins artesanais, sempre valorizando ingredientes de qualidade,
+          produção criteriosa e sabores que conquistam clientes e parceiros.
+        </p>
+        <br>
+        <p>
+          Somos apaixonados por dindins e buscamos oferecer uma experiência deliciosa, refrescante e cheia de carinho.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="diferenciais">
+    <h2 class="titulo">Nossos Diferenciais</h2>
+
+    <div class="cards-diferenciais">
+      <div class="card-dif">
+        <h3>Desde 1994</h3>
+        <p>Tradição, confiança e credibilidade no mercado de dindins artesanais.</p>
+      </div>
+
+      <div class="card-dif">
+        <h3>100% Artesanal</h3>
+        <p>Produtos preparados com cuidado, qualidade e muito sabor.</p>
+      </div>
+
+      <div class="card-dif">
+        <h3>Sabores Gourmet</h3>
+        <p>Combinações especiais para transformar o geladinho em sobremesa.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sabores" class="sabores">
+    <h2 class="titulo">Sabores Gourmet</h2>
+    <p class="subtitulo">Escolha seu sabor favorito e aproveite uma experiência super gelada.</p>
+
+    <div class="grid-sabores">
+
+      <div class="card">
+        <img src="Banoffee.jpg" alt="Dindin Banoffee">
+        <div class="card-conteudo">
+          <h3>🍌 Banoffee</h3>
+          <p>Banana, doce de leite, chantilly e biscoito em uma combinação cremosa e nostálgica.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="Coco 2.jpg" alt="Dindin Coco">
+        <div class="card-conteudo">
+          <h3>🥥 Coco</h3>
+          <p>Coco natural com leite, creme de leite e leite condensado. Cremoso e refrescante.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="Dindin D Socorro - Coco com abacaxi.jpg" alt="Dindin Coco com Abacaxi">
+        <div class="card-conteudo">
+          <h3>🥥🍍 Coco com Abacaxi</h3>
+          <p>A união tropical do coco natural com pedaços suculentos de abacaxi.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="Kitkat-1.jpg" alt="Dindin KitKat">
+        <div class="card-conteudo">
+          <h3>🍫 KitKat</h3>
+          <p>Chocolate cremoso com a crocância marcante do wafer KitKat.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="Mousse de Limão.jpg" alt="Dindin Mousse de Limão">
+        <div class="card-conteudo">
+          <h3>🍋 Mousse de Limão</h3>
+          <p>Doce e cítrico na medida certa, com suco da fruta e toque refrescante.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="Mousse de Maracujá 1.jpg" alt="Dindin Mousse de Maracujá">
+        <div class="card-conteudo">
+          <h3>💛 Mousse de Maracujá</h3>
+          <p>Intenso, cremoso e refrescante, com o sabor marcante do maracujá.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="Mousse de Morango.jpg" alt="Dindin Mousse de Morango">
+        <div class="card-conteudo">
+          <h3>🍓 Mousse de Morango</h3>
+          <p>Feito com morangos frescos, leve, delicado e cheio de sabor.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="Ninho com Nutella.jpg" alt="Dindin Ninho com Nutella">
+        <div class="card-conteudo">
+          <h3>🥛 Ninho com Nutella</h3>
+          <p>Leite Ninho cremoso com generosas camadas de Nutella.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="Oreo.jpg" alt="Dindin Oreo">
+        <div class="card-conteudo">
+          <h3>🍪 Oreo</h3>
+          <p>Base cremosa com pedacinhos crocantes de biscoito Oreo.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="Pudim 2.jpg" alt="Dindin Pudim">
+        <div class="card-conteudo">
+          <h3>🍮 Pudim</h3>
+          <p>O clássico pudim de leite condensado com calda de caramelo artesanal.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="franquia" class="franquia">
+    <div class="franquia-box">
+      <h2 class="titulo">Seja um Parceiro</h2>
+      <p>
+        A Dindins Dona Socorro busca ampliar sua presença digital e atrair novos franqueados e parceiros comerciais.
+      </p>
+
+      <ul>
+        <li>Confiança e credibilidade desde 1994</li>
+        <li>Atendimento diferenciado</li>
+        <li>Excelente margem de lucro</li>
+        <li>Produto artesanal com forte memória afetiva</li>
+      </ul>
+
+      <a href="#contato" class="botao">Quero saber mais</a>
+    </div>
+  </section>
+
+  <section class="galeria">
+    <h2 class="titulo">Galeria</h2>
+
+    <div class="grid-galeria">
+      <img src="Dindin D Socorro - Kitkat-2.jpg" alt="Dindin KitKat">
+      <img src="Coco com Abacaxi 2.jpg" alt="Coco com Abacaxi">
+      <img src="Mousse de Maracujá 1.jpg" alt="Mousse de Maracujá">
+      <img src="Mousse de Morango.jpg" alt="Mousse de Morango">
+      <img src="Oreo.jpg" alt="Oreo">
+      <img src="Pudim 2.jpg" alt="Pudim">
+    </div>
+  </section>
+
+  <section id="contato" class="contato">
+    <h2 class="titulo">Contatos</h2>
+    <p style="margin-bottom: 20px; font-size: 1.1rem; color: #fce7f3; opacity: 0.9;">Clique abaixo para nos acompanhar nas redes sociais:</p>
+    <div class="social-links" style="display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 15px;">
+      <a href="https://www.instagram.com/ddonasocorro/" target="_blank" class="social-btn" style="color: #ffd84d; text-decoration: none; font-size: 1.5rem; font-weight: 800; text-shadow: 0 2px 8px rgba(0,0,0,0.3); transition: 0.3s; display: inline-flex; align-items: center; gap: 8px;">
+        📸 Instagram: @ddonasocorro
+      </a>
+      <a href="https://www.tiktok.com/@ddonasocorro" target="_blank" class="social-btn" style="color: #ffd84d; text-decoration: none; font-size: 1.5rem; font-weight: 800; text-shadow: 0 2px 8px rgba(0,0,0,0.3); transition: 0.3s; display: inline-flex; align-items: center; gap: 8px;">
+        🎵 TikTok: @ddonasocorro
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Projeto Landing Page - Dindins Dona Socorro</p>
+    <p>Desenvolvimento Web</p>
+  </footer>
+
+</body>
+</html>

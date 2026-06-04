@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist - Rafael Fernandes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            color: #f8fafc;
+            background: #090d16;
+            min-height: 100vh;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background-image: linear-gradient(rgba(9, 13, 22, 0.75), rgba(9, 13, 22, 0.9)),
+                url("assets/img/fael.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        header {
+            width: 100%;
+            background: rgba(9, 13, 22, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #cbd5e1;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #34d399;
+        }
+
+        .apresentacao {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        .apresentacao h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #34d399, #00f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .apresentacao p {
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.6;
+            color: #94a3b8;
+        }
+
+        main {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px 20px 80px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .secao-musicas {
+            margin-top: 10px;
+        }
+
+        .secao-musicas h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #f8fafc;
+            position: relative;
+        }
+
+        .secao-musicas h2::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #34d399, #00f2fe);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .card-musica {
+            background: rgba(15, 23, 42, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 30px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-musica::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(52, 211, 153, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .card-musica:hover {
+            transform: translateY(-8px);
+            border-color: rgba(52, 211, 153, 0.3);
+            box-shadow: 0 15px 35px rgba(52, 211, 153, 0.15);
+        }
+
+        .card-musica:hover::before {
+            opacity: 1;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .tag-genero {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(52, 211, 153, 0.15);
+            color: #34d399;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-musica h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #f8fafc;
+        }
+
+        .artista {
+            font-size: 0.9rem;
+            color: #00f2fe;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .card-musica p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #94a3b8;
+            margin-bottom: 25px;
+            min-height: 60px;
+        }
+
+        .audio-container {
+            position: relative;
+            z-index: 10;
+            margin-top: auto;
+        }
+
+        .card-musica audio {
+            width: 100%;
+            outline: none;
+            border-radius: 30px;
+        }
+
+        /* Customizing audio element look slightly on supported browsers */
+        audio::-webkit-media-controls-panel {
+            background-color: rgba(15, 23, 42, 0.9);
+        }
+        audio::-webkit-media-controls-play-button,
+        audio::-webkit-media-controls-volume-control-container,
+        audio::-webkit-media-controls-volume-slider,
+        audio::-webkit-media-controls-current-time-display,
+        audio::-webkit-media-controls-time-remaining-display {
+            filter: invert(1);
+        }
+
+        .data {
+            margin-top: 15px;
+            font-size: 0.75rem;
+            color: #64748b;
+            font-weight: 500;
+            text-align: right;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(9, 13, 22, 0.9);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.8rem;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        footer a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #34d399;
+        }
+
+        .footer-credits {
+            margin-top: 8px;
+            font-size: 0.75rem;
+            color: #475569;
+        }
+
+        @media(max-width: 768px) {
+            .apresentacao h1 {
+                font-size: 2.2rem;
+            }
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="index.html" style="color: #34d399; font-weight: 600;">← VOLTAR AO PORTFÓLIO</a></li>
+                    <li><a href="#">INÍCIO</a></li>
+                    <li><a href="#">SOBRE</a></li>
+                    <li><a href="#">AGENDA</a></li>
+                    <li><a href="#">MÚSICAS</a></li>
+                    <li><a href="#">CONTATO</a></li>
+                    <li><a href="assets/documentos/card de musica.pdf" target="_blank" style="color: #ffd500; font-weight: 600;">📄 RELATÓRIO</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="apresentacao">
+            <h1>RAFAEL FERNANDES</h1>
+            <p>CONECTANDO SENTIMENTOS E RITMOS ATRAVÉS DOS MELHORES SUCESSOS DA MÚSICA.</p>
+        </section>
+
+        <main>
+            <section class="secao-musicas">
+                <h2>PLAYLIST SELECIONADA</h2>
+                <div class="cards">
+                    
+                    <!-- Música 1: Luísa Sonza & KayBlack -->
+                    <article class="card-musica">
+                        <div class="card-content">
+                            <span class="tag-genero">Pop / Rap</span>
+                            <h3>Sagrado Profano</h3>
+                            <div class="artista">Luísa Sonza, KayBlack</div>
+                            <p>Um dos maiores sucessos nacionais, mesclando pop e rap romântico em uma letra marcante e intensa.</p>
+                        </div>
+                        <div class="audio-container">
+                            <audio controls>
+                                <source src="assets/audio/Luísa Sonza, KayBlack - Sagrado Profano (Letra_Legendado) - Filtr Music Brasil (youtube).mp3" type="audio/mpeg">
+                                Seu navegador não suporta o player de áudio.
+                            </audio>
+                            <div class="data">LANÇAMENTO 2024</div>
+                        </div>
+                    </article>
+
+                    <!-- Música 2: MC K.K -->
+                    <article class="card-musica">
+                        <div class="card-content">
+                            <span class="tag-genero">Funk</span>
+                            <h3>Agudo Mágico 3</h3>
+                            <div class="artista">MC K.K</div>
+                            <p>O melhor do funk com batidas marcantes e os agudos eletrônicos característicos que dominam as pistas.</p>
+                        </div>
+                        <div class="audio-container">
+                            <audio controls>
+                                <source src="assets/audio/Agudo Mágico 3 - MC K.K (youtube).mp3" type="audio/mpeg">
+                                Seu navegador não suporta o player de áudio.
+                            </audio>
+                            <div class="data">LANÇAMENTO 2023</div>
+                        </div>
+                    </article>
+
+                    <!-- Música 3: Anitta -->
+                    <article class="card-musica">
+                        <div class="card-content">
+                            <span class="tag-genero">Pop / Funk</span>
+                            <h3>Desgraça</h3>
+                            <div class="artista">Anitta</div>
+                            <p>Um lançamento vibrante da estrela internacional Anitta, trazendo ritmos urbanos e muita atitude.</p>
+                        </div>
+                        <div class="audio-container">
+                            <audio controls>
+                                <source src="assets/audio/Anitta - Desgraça (Official Music Video) - Anitta (youtube).mp3" type="audio/mpeg">
+                                Seu navegador não suporta o player de áudio.
+                            </audio>
+                            <div class="data">LANÇAMENTO 2026</div>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 Rafael Fernandes Durães. Todos os direitos reservados.</p>
+            <p class="footer-credits">
+                Áudios de propriedade e direitos autorais reservados aos respectivos artistas: 
+                <a href="https://www.youtube.com" target="_blank">Luísa Sonza, KayBlack, MC K.K, Anitta</a>. 
+                Uso acadêmico e demonstrativo.
+            </p>
+        </footer>
+    </div>
+</body>
+
+</html>

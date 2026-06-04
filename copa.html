@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PANINI - Copa do Mundo 2026 | Rafael</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --roxo: #0f021c;
+            --roxo2: #240046;
+            --rosa: #ff1493;
+            --azul: #00b4ff;
+            --amarelo: #ffd500;
+            --dourado: #ffc83d;
+            --card: rgba(32, 17, 63, 0.45);
+            --texto: #f8f5ff;
+        }
+
+        body {
+            background: linear-gradient(180deg, #090214 0%, #15062c 50%, #031026 100%);
+            color: var(--texto);
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Ambient glow spheres */
+        body::before, body::after {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(140px);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        body::before {
+            background: var(--rosa);
+            top: 15%;
+            right: -10%;
+        }
+        body::after {
+            background: var(--azul);
+            bottom: 25%;
+            left: -10%;
+        }
+
+        .navbar {
+            background: rgba(9, 2, 20, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 20, 147, 0.2);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 900;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-brand span {
+            color: var(--amarelo);
+            text-shadow: 0 0 10px rgba(255, 213, 0, 0.3);
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: #d8c9ea !important;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link.active,
+        .nav-link:hover {
+            color: var(--amarelo) !important;
+        }
+
+        .nav-portfolio {
+            color: var(--amarelo) !important;
+            font-weight: 800;
+            border: 1px solid rgba(255, 213, 0, 0.3);
+            border-radius: 20px;
+            padding: 6px 16px !important;
+            margin-right: 15px;
+            background: rgba(255, 213, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .nav-portfolio:hover {
+            background: var(--amarelo);
+            color: #090214 !important;
+            box-shadow: 0 0 15px rgba(255, 213, 0, 0.4);
+        }
+
+        /* Hero Panel */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+            padding-bottom: 60px;
+            background:
+                linear-gradient(135deg, rgba(15, 2, 28, 0.9), rgba(255, 20, 147, 0.25), rgba(0, 180, 255, 0.25)),
+                url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-box {
+            max-width: 820px;
+            padding: 50px;
+            border-radius: 35px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+        }
+
+        .tag {
+            background: var(--amarelo);
+            color: #18002f;
+            font-weight: 900;
+            padding: 8px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 22px;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #ffffff, #d8c9ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Sections General */
+        section {
+            padding: 90px 0;
+            scroll-margin-top: 80px;
+        }
+
+        .titulo {
+            text-align: center;
+            font-weight: 900;
+            font-size: 2.8rem;
+            color: #fff;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            text-shadow: 0 0 20px rgba(255, 20, 147, 0.35);
+        }
+
+        .subtitulo {
+            color: #b4a2cb;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* Group Cards */
+        .grupo-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+            height: 100%;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            backdrop-filter: blur(8px);
+        }
+
+        .grupo-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--rosa);
+            box-shadow: 0 15px 35px rgba(255, 20, 147, 0.25);
+        }
+
+        .grupo-topo {
+            background: linear-gradient(135deg, var(--rosa), var(--azul));
+            padding: 15px;
+            text-align: center;
+            font-weight: 900;
+            font-size: 1.15rem;
+            color: white;
+            letter-spacing: 0.5px;
+        }
+
+        .grupo-body {
+            padding: 20px;
+        }
+
+        .time {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #e5e7eb;
+        }
+
+        .time:last-child {
+            border-bottom: 0;
+        }
+
+        .time img {
+            width: 32px;
+            height: 22px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .bola {
+            width: 32px;
+            text-align: center;
+            display: inline-block;
+            font-size: 1.1rem;
+        }
+
+        /* Figurinha Section */
+        .destaque {
+            background: linear-gradient(180deg, rgba(255, 20, 147, 0.05) 0%, rgba(0, 180, 255, 0.03) 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .figurinha-destaque {
+            background:
+                radial-gradient(circle at top left, rgba(255, 213, 0, 0.2) 0%, transparent 40%),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 2px solid var(--rosa);
+            box-shadow: 0 0 35px rgba(255, 20, 147, 0.25);
+            border-radius: 30px;
+            padding: 40px;
+            backdrop-filter: blur(12px);
+        }
+
+        .figurinha-img {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 3px solid rgba(255, 213, 0, 0.75);
+            transition: all 0.5s ease;
+        }
+
+        .figurinha-destaque:hover .figurinha-img {
+            transform: scale(1.03) rotate(2deg);
+            box-shadow: 0 20px 45px rgba(255, 213, 0, 0.25);
+        }
+
+        .rara {
+            color: var(--dourado);
+            font-size: 2.6rem;
+            font-weight: 900;
+            text-shadow: 0 0 20px rgba(255, 200, 61, 0.45);
+            letter-spacing: -1px;
+            margin-bottom: 5px;
+        }
+
+        .mini-info {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            padding: 20px 15px;
+            text-align: center;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .mini-info:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--rosa);
+        }
+
+        .mini-info h5 {
+            color: var(--amarelo);
+            font-weight: 800;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .mini-info p {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+
+        /* Match Table */
+        .tabela-box {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .table {
+            margin-bottom: 0;
+            background: rgba(20, 17, 43, 0.6);
+            color: #e5e7eb;
+        }
+
+        .table th {
+            background: linear-gradient(135deg, var(--roxo2), var(--rosa)) !important;
+            color: white !important;
+            padding: 16px;
+            font-weight: 700;
+            border-bottom: none;
+            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+        }
+
+        .table td {
+            padding: 16px;
+            border-color: rgba(255, 255, 255, 0.05);
+            background: rgba(20, 17, 43, 0.4);
+            color: #cbd5e1;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .table-hover tbody tr:hover td {
+            background: rgba(255, 20, 147, 0.1) !important;
+            color: white;
+            cursor: pointer;
+        }
+
+        .resultado {
+            color: var(--amarelo);
+            font-weight: 800;
+        }
+
+        .status {
+            background: rgba(255, 20, 147, 0.15);
+            color: #ff60b5;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 20, 147, 0.3);
+            display: inline-block;
+        }
+
+        .status-proximo {
+            background: rgba(0, 180, 255, 0.15);
+            color: #6fd5ff;
+            border-color: rgba(0, 180, 255, 0.3);
+        }
+
+        /* Bracket Chaveamento Layout */
+        .bracket-area {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px;
+            padding: 35px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+            overflow-x: auto;
+            backdrop-filter: blur(8px);
+        }
+
+        .bracket {
+            min-width: 1180px;
+            display: grid;
+            grid-template-columns: 1.2fr 1.05fr 0.9fr 0.95fr 0.9fr 1.05fr 1.2fr;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .round-title {
+            text-align: center;
+            font-weight: 800;
+            color: var(--amarelo);
+            margin-bottom: 22px;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .round {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .round.quartas {
+            gap: 85px;
+        }
+
+        .round.semi {
+            gap: 190px;
+        }
+
+        .match {
+            background: rgba(18, 10, 36, 0.85);
+            color: white;
+            border: 1px solid rgba(255, 20, 147, 0.3);
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .match:hover {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 15px rgba(255, 20, 147, 0.3);
+            transform: scale(1.02);
+        }
+
+        .match::after {
+            content: "";
+            position: absolute;
+            right: -16px;
+            top: 50%;
+            width: 16px;
+            height: 2px;
+            background: #ff1493;
+        }
+
+        .right-side .match::after {
+            right: auto;
+            left: -16px;
+        }
+
+        .team-line {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 0 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .team-line:last-child {
+            border-bottom: 0;
+        }
+
+        .team-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .team-name img {
+            width: 24px;
+            height: 16px;
+            object-fit: cover;
+            border-radius: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .score {
+            background: linear-gradient(135deg, var(--roxo2), var(--azul));
+            color: white;
+            border-radius: 6px;
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            font-weight: 900;
+        }
+
+        .empty-match {
+            height: 80px;
+            border: 1px dashed rgba(255, 20, 147, 0.4);
+            border-radius: 16px;
+            background: rgba(255, 20, 147, 0.04);
+            color: #ff9bd1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .final-box {
+            background: linear-gradient(135deg, var(--roxo2) 0%, var(--rosa) 50%, var(--azul) 100%);
+            color: white;
+            border-radius: 26px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(255, 20, 147, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .final-box h4 {
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .final-times {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 20px 0;
+        }
+
+        .final-times img {
+            width: 60px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .final-times p {
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        .campeao {
+            color: var(--amarelo);
+            font-weight: 900;
+            font-size: 1.45rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 10px rgba(255, 213, 0, 0.5);
+            margin-top: 15px;
+        }
+
+        /* Projeto Academico CEUB */
+        .projeto-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+            max-width: 100%;
+        }
+
+        .projeto-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 550px;
+            object-fit: cover;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .projeto-container:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(255, 20, 147, 0.3);
+            border-color: rgba(255, 20, 147, 0.4);
+        }
+
+        .projeto-container:hover .projeto-img {
+            transform: scale(1.02);
+        }
+
+        .assinatura {
+            color: var(--amarelo);
+            font-weight: 800;
+            text-shadow: 0 0 10px rgba(255, 213, 0, 0.3);
+        }
+
+        footer {
+            background: #080112;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 20, 147, 0.2);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 5px;
+        }
+
+        @media(max-width: 992px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            .hero-box {
+                padding: 35px;
+            }
+            .rara {
+                font-size: 2.2rem;
+            }
+            .projeto-container {
+                border-radius: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#menu" data-bs-offset="100" tabindex="0">
+
+    <!-- Responsive Styled Navbar -->
+    <nav id="menu" class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#inicio"><span>PANINI</span> Copa 2026</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link nav-portfolio" href="index.html">← Portfólio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#grupos">Grupos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#figurinha">Figurinha</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#jogos">Jogos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#classificacao">Classificação</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#chaveamento">Chaveamento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projeto">Projeto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="assets/documentos/Copa.pdf" target="_blank" style="color: #ffd500; font-weight: bold; text-shadow: 0 0 8px rgba(255, 213, 0, 0.4);">📄 Relatório</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <header id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-box">
+                <span class="tag">PANINI • World Cup 2026</span>
+                <h1>Copa do Mundo 2026</h1>
+                <p class="lead mt-3">
+                    Acompanhe em tempo real a tabela de jogos, fase de grupos, classificação e o chaveamento completo da maior competição de futebol do planeta.
+                </p>
+                <div class="d-flex gap-3 flex-wrap mt-4">
+                    <a href="#grupos" class="btn btn-warning btn-lg fw-bold px-4 py-2" style="border-radius: 30px; box-shadow: 0 4px 15px rgba(255, 213, 0, 0.35);">Ver Grupos</a>
+                    <a href="#figurinha" class="btn btn-outline-light btn-lg px-4 py-2" style="border-radius: 30px;">Figurinha Rara</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Fase de Grupos -->
+    <section id="grupos">
+        <div class="container">
+            <h2 class="titulo">Fase de Grupos</h2>
+            <p class="subtitulo">Acompanhe a distribuição de todas as seleções classificadas para a disputa mundial, divididas do Grupo A ao Grupo L.</p>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="grupo-card">
+                        <div class="grupo-topo">Grupo A</div>
+                        <div class="grupo-body">
+                            <div class="time"><img src="https://flagcdn.com/w40/mx.png" alt="México"><span>México</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/za.png" alt="África do Sul"><span>África do Sul</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/kr.png" alt="Coreia do Sul"><span>Coreia do Sul</span></div>
+                            <div class="time"><span class="bola">🏆</span><span>Repescagem 4</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="grupo-card">
+                        <div class="grupo-topo">Grupo B</div>
+                        <div class="grupo-body">
+                            <div class="time"><img src="https://flagcdn.com/w40/ca.png" alt="Canadá"><span>Canadá</span></div>
+                            <div class="time"><span class="bola">🏆</span><span>Repescagem 1</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/qa.png" alt="Catar"><span>Catar</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/ch.png" alt="Suíça"><span>Suíça</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="grupo-card">
+                        <div class="grupo-topo">Grupo C</div>
+                        <div class="grupo-body">
+                            <div class="time"><img src="https://flagcdn.com/w40/br.png" alt="Brasil"><span>Brasil</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/ma.png" alt="Marrocos"><span>Marrocos</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/ht.png" alt="Haiti"><span>Haiti</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/gb-sct.png" alt="Escócia"><span>Escócia</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="grupo-card">
+                        <div class="grupo-topo">Grupo D</div>
+                        <div class="grupo-body">
+                            <div class="time"><img src="https://flagcdn.com/w40/us.png" alt="EUA"><span>EUA</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/py.png" alt="Paraguai"><span>Paraguai</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/au.png" alt="Austrália"><span>Austrália</span></div>
+                            <div class="time"><span class="bola">🏆</span><span>Repescagem 3</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="grupo-card">
+                        <div class="grupo-topo">Grupo E</div>
+                        <div class="grupo-body">
+                            <div class="time"><img src="https://flagcdn.com/w40/de.png" alt="Alemanha"><span>Alemanha</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/cw.png" alt="Curaçao"><span>Curaçao</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/ci.png" alt="Costa do Marfim"><span>Costa do Marfim</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/ec.png" alt="Equador"><span>Equador</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="grupo-card">
+                        <div class="grupo-topo">Grupo F</div>
+                        <div class="grupo-body">
+                            <div class="time"><img src="https://flagcdn.com/w40/nl.png" alt="Holanda"><span>Holanda</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/jp.png" alt="Japão"><span>Japão</span></div>
+                            <div class="time"><span class="bola">🏆</span><span>Repescagem 2</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/tn.png" alt="Tunísia"><span>Tunísia</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="grupo-card">
+                        <div class="grupo-topo">Grupo G</div>
+                        <div class="grupo-body">
+                            <div class="time"><img src="https://flagcdn.com/w40/be.png" alt="Bélgica"><span>Bélgica</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/eg.png" alt="Egito"><span>Egito</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/ir.png" alt="Irã"><span>Irã</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/nz.png" alt="Nova Zelândia"><span>Nova Zelândia</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="grupo-card">
+                        <div class="grupo-topo">Grupo H</div>
+                        <div class="grupo-body">
+                            <div class="time"><img src="https://flagcdn.com/w40/es.png" alt="Espanha"><span>Espanha</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/cv.png" alt="Cabo Verde"><span>Cabo Verde</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/sa.png" alt="Arábia Saudita"><span>Arábia Saudita</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/uy.png" alt="Uruguai"><span>Uruguai</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="grupo-card">
+                        <div class="grupo-topo">Grupo I</div>
+                        <div class="grupo-body">
+                            <div class="time"><img src="https://flagcdn.com/w40/fr.png" alt="França"><span>França</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/sn.png" alt="Senegal"><span>Senegal</span></div>
+                            <div class="time"><span class="bola">🏆</span><span>Repescagem 6</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/no.png" alt="Noruega"><span>Noruega</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="grupo-card">
+                        <div class="grupo-topo">Grupo J</div>
+                        <div class="grupo-body">
+                            <div class="time"><img src="https://flagcdn.com/w40/ar.png" alt="Argentina"><span>Argentina</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/dz.png" alt="Argélia"><span>Argélia</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/at.png" alt="Áustria"><span>Áustria</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/jo.png" alt="Jordânia"><span>Jordânia</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="grupo-card">
+                        <div class="grupo-topo">Grupo K</div>
+                        <div class="grupo-body">
+                            <div class="time"><img src="https://flagcdn.com/w40/pt.png" alt="Portugal"><span>Portugal</span></div>
+                            <div class="time"><span class="bola">🏆</span><span>Repescagem 5</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/uz.png" alt="Uzbequistão"><span>Uzbequistão</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/co.png" alt="Colômbia"><span>Colômbia</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="grupo-card">
+                        <div class="grupo-topo">Grupo L</div>
+                        <div class="grupo-body">
+                            <div class="time"><img src="https://flagcdn.com/w40/gb-eng.png" alt="Inglaterra"><span>Inglaterra</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/hr.png" alt="Croácia"><span>Croácia</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/gh.png" alt="Gana"><span>Gana</span></div>
+                            <div class="time"><img src="https://flagcdn.com/w40/pa.png" alt="Panamá"><span>Panamá</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Figurinha Destaque -->
+    <section id="figurinha" class="destaque">
+        <div class="container">
+            <h2 class="titulo">Figurinha em Destaque</h2>
+            <p class="subtitulo">A figurinha mais rara e desejada da coleção PANINI oficial: Golden Legend do Rei Pelé.</p>
+            
+            <div class="figurinha-destaque">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-5 text-center">
+                        <img src="assets/img/Pele.png" class="figurinha-img" alt="Figurinha Golden Legend Pelé">
+                    </div>
+                    <div class="col-lg-7">
+                        <span class="tag">🏆 SUPER RARA • LEGEND L-01</span>
+                        <h3 class="rara">A MAIS PROCURADA</h3>
+                        <h4 class="fw-bold text-warning fs-3 mb-3">Golden Legend: Pelé</h4>
+                        <p class="lead text-light-emphasis" style="font-size: 1.05rem; line-height: 1.7;">
+                            Uma homenagem eterna ao Rei do Futebol brasileiro. A figurinha dourada é a peça definitiva para completar o álbum oficial de colecionadores do mundo todo.
+                        </p>
+                        
+                        <div class="row g-3 mt-4">
+                            <div class="col-md-4">
+                                <div class="mini-info">
+                                    <h5>💎 Rara</h5>
+                                    <p class="mb-0">Edição Ouro</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mini-info">
+                                    <h5>⭐ Categoria</h5>
+                                    <p class="mb-0">Legend L-01</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mini-info">
+                                    <h5>👑 Status</h5>
+                                    <p class="mb-0">Rei Mundial</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-warning btn-lg fw-bold mt-4 px-4 py-2" style="border-radius: 30px;" onclick="mostrarMensagem()">Ver curiosidade</button>
+                        <p id="curiosidade" class="mt-3 fw-bold text-warning" style="font-size: 1.05rem; transition: 0.3s;"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabela de Jogos -->
+    <section id="jogos">
+        <div class="container">
+            <h2 class="titulo">Tabela de Jogos</h2>
+            <p class="subtitulo">Acompanhe a agenda das rodadas iniciais. Clique em qualquer linha da tabela para destacá-la.</p>
+            
+            <div class="table-responsive tabela-box">
+                <table class="table table-hover text-center align-middle">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Grupo</th>
+                            <th>Confronto</th>
+                            <th>Resultado</th>
+                            <th>Estádio</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr onclick="selecionarJogo(this)">
+                            <td>11/06/2026</td>
+                            <td>A</td>
+                            <td>México x África do Sul</td>
+                            <td class="resultado">0 x 0</td>
+                            <td>Estádio Azteca</td>
+                            <td><span class="status">Encerrado</span></td>
+                        </tr>
+                        <tr onclick="selecionarJogo(this)">
+                            <td>12/06/2026</td>
+                            <td>C</td>
+                            <td>Brasil x Marrocos</td>
+                            <td class="resultado">2 x 1</td>
+                            <td>MetLife Stadium</td>
+                            <td><span class="status">Encerrado</span></td>
+                        </tr>
+                        <tr onclick="selecionarJogo(this)">
+                            <td>13/06/2026</td>
+                            <td>J</td>
+                            <td>Argentina x Argélia</td>
+                            <td class="resultado">3 x 0</td>
+                            <td>Hard Rock Stadium</td>
+                            <td><span class="status">Encerrado</span></td>
+                        </tr>
+                        <tr onclick="selecionarJogo(this)">
+                            <td>14/06/2026</td>
+                            <td>K</td>
+                            <td>Portugal x Colômbia</td>
+                            <td class="resultado">1 x 1</td>
+                            <td>AT&T Stadium</td>
+                            <td><span class="status">Encerrado</span></td>
+                        </tr>
+                        <tr onclick="selecionarJogo(this)">
+                            <td>15/06/2026</td>
+                            <td>I</td>
+                            <td>França x Senegal</td>
+                            <td class="resultado">-</td>
+                            <td>SoFi Stadium</td>
+                            <td><span class="status status-proximo">Próximo</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classificação -->
+    <section id="classificacao" class="destaque">
+        <div class="container">
+            <h2 class="titulo">Classificação Demonstrativa</h2>
+            <p class="subtitulo">Exemplo detalhado do posicionamento dos principais grupos da competição, baseados em saldo de gols e pontos.</p>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="grupo-card p-4">
+                        <h4 class="fw-bold mb-3" style="color: var(--amarelo);">Grupo C</h4>
+                        <table class="table table-striped table-dark m-0" style="background: transparent;">
+                            <thead>
+                                <tr>
+                                    <th>Pos.</th>
+                                    <th>Seleção</th>
+                                    <th>Pts</th>
+                                    <th>Saldo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="resultado">1º</td><td>Brasil</td><td>3</td><td>+1</td></tr>
+                                <tr><td>2º</td><td>Haiti</td><td>0</td><td>0</td></tr>
+                                <tr><td>3º</td><td>Escócia</td><td>0</td><td>0</td></tr>
+                                <tr><td>4º</td><td>Marrocos</td><td>0</td><td>-1</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="grupo-card p-4">
+                        <h4 class="fw-bold mb-3" style="color: var(--amarelo);">Grupo J</h4>
+                        <table class="table table-striped table-dark m-0" style="background: transparent;">
+                            <thead>
+                                <tr>
+                                    <th>Pos.</th>
+                                    <th>Seleção</th>
+                                    <th>Pts</th>
+                                    <th>Saldo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="resultado">1º</td><td>Argentina</td><td>3</td><td>+3</td></tr>
+                                <tr><td>2º</td><td>Áustria</td><td>0</td><td>0</td></tr>
+                                <tr><td>3º</td><td>Jordânia</td><td>0</td><td>0</td></tr>
+                                <tr><td>4º</td><td>Argélia</td><td>0</td><td>-3</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chaveamento Bracket -->
+    <section id="chaveamento">
+        <div class="container-fluid px-4">
+            <h2 class="titulo">Previsão do Chaveamento Final (Copa 2026)</h2>
+            <p class="subtitulo">Visualização interativa das etapas eliminatórias com a previsão para a Copa do Mundo 2026, com o Brasil conquistando o Hexa!</p>
+            
+            <div class="bracket-area">
+                <div class="bracket">
+                    
+                    <!-- Round 1: Oitavas -->
+                    <div>
+                        <div class="round-title">Oitavas de Final</div>
+                        <div class="round">
+                            <div class="match">
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/nl.png">Holanda</span><span class="score">3</span></div>
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/us.png">EUA</span><span class="score">1</span></div>
+                            </div>
+                            <div class="match">
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/ar.png">Argentina</span><span class="score">2</span></div>
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/au.png">Austrália</span><span class="score">1</span></div>
+                            </div>
+                            <div class="match">
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/jp.png">Japão</span><span class="score">1</span></div>
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/hr.png">Croácia</span><span class="score">3</span></div>
+                            </div>
+                            <div class="match">
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/br.png">Brasil</span><span class="score">4</span></div>
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/kr.png">Coreia do Sul</span><span class="score">1</span></div>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <!-- Round 2: Quartas -->
+                    <div>
+                        <div class="round-title">Quartas de Final</div>
+                        <div class="round quartas">
+                            <div class="match">
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/nl.png">Holanda</span><span class="score">2</span></div>
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/ar.png">Argentina</span><span class="score">3</span></div>
+                            </div>
+                            <div class="match">
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/hr.png">Croácia</span><span class="score">1</span></div>
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/br.png">Brasil</span><span class="score">3</span></div>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <!-- Round 3: Semifinais Left -->
+                    <div>
+                        <div class="round-title">Semifinal</div>
+                        <div class="round semi">
+                            <div class="match">
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/ar.png">Argentina</span><span class="score">1</span></div>
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/br.png">Brasil</span><span class="score">2</span></div>
+                            </div>
+                            <div class="empty-match">Disputa de 3º lugar</div>
+                        </div>
+                    </div>
+ 
+                    <!-- Round 4: Final Central -->
+                    <div>
+                        <div class="round-title">Grande Final</div>
+                        <div class="final-box">
+                            <h4>Final</h4>
+                            <p class="m-0 text-light-emphasis">Brasil x França</p>
+                            <div class="final-times">
+                                <div><img src="https://flagcdn.com/w80/br.png"><p class="mb-0 mt-2">Brasil</p></div>
+                                <div><img src="https://flagcdn.com/w80/fr.png"><p class="mb-0 mt-2">França</p></div>
+                            </div>
+                            <div class="campeao">🏆 Brasil</div>
+                        </div>
+                    </div>
+
+                    <!-- Round 5: Semifinais Right -->
+                    <div>
+                        <div class="round-title">Semifinal</div>
+                        <div class="round semi right-side">
+                            <div class="match">
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/fr.png">França</span><span class="score">2</span></div>
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/ma.png">Marrocos</span><span class="score">0</span></div>
+                            </div>
+                            <div class="empty-match">Disputa de 3º lugar</div>
+                        </div>
+                    </div>
+
+                    <!-- Round 6: Quartas Right -->
+                    <div>
+                        <div class="round-title">Quartas de Final</div>
+                        <div class="round quartas right-side">
+                            <div class="match">
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/gb-eng.png">Inglaterra</span><span class="score">1</span></div>
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/fr.png">França</span><span class="score">2</span></div>
+                            </div>
+                            <div class="match">
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/ma.png">Marrocos</span><span class="score">1</span></div>
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/pt.png">Portugal</span><span class="score">0</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Round 7: Oitavas Right -->
+                    <div>
+                        <div class="round-title">Oitavas de Final</div>
+                        <div class="round right-side">
+                            <div class="match">
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/gb-eng.png">Inglaterra</span><span class="score">3</span></div>
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/sn.png">Senegal</span><span class="score">0</span></div>
+                            </div>
+                            <div class="match">
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/fr.png">França</span><span class="score">3</span></div>
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/pl.png">Polônia</span><span class="score">1</span></div>
+                            </div>
+                            <div class="match">
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/ma.png">Marrocos</span><span class="score">1</span></div>
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/es.png">Espanha</span><span class="score">0</span></div>
+                            </div>
+                            <div class="match">
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/pt.png">Portugal</span><span class="score">6</span></div>
+                                <div class="team-line"><span class="team-name"><img src="https://flagcdn.com/w40/ch.png">Suíça</span><span class="score">1</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projeto Academico Section -->
+    <section id="projeto" class="container text-center my-5">
+        <div class="projeto-container">
+            <img src="assets/img/Panini.png" alt="Panini Copa 2026" class="projeto-img img-fluid">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="mb-1 fw-bold">PANINI • Copa do Mundo 2026</p>
+        <small>© 2026 Desenvolvido por <span>Rafael Fernandes Durães</span>. Todos os direitos reservados.</small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function mostrarMensagem() {
+            document.getElementById("curiosidade").innerHTML =
+                "👑 O Rei Pelé é o único jogador da história do futebol mundial a conquistar 3 Copas do Mundo FIFA (1958, 1962 e 1970). Essa figurinha Golden Legend celebra o legado do maior ídolo de todos os tempos!";
+        }
+
+        function selecionarJogo(linha) {
+            let linhas = document.querySelectorAll("#jogos tbody tr");
+            linhas.forEach(function(item) {
+                item.style.backgroundColor = "";
+                item.style.color = "";
+            });
+            linha.style.backgroundColor = "rgba(255, 20, 147, 0.25)";
+            linha.style.color = "white";
+        }
+    </script>
+</body>
+
+</html>

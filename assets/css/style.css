@@ -1,0 +1,23 @@
+* { box-sizing: border-box; }
+body { font-family: Arial, Helvetica, sans-serif; background: #0a0a0c; color: #f8fafc; }
+.menu { background: rgba(10, 10, 12, 0.96); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(212, 175, 55, 0.15); }
+.hero { background: linear-gradient(135deg, rgba(15,15,18,.92), rgba(30,30,36,.85)), url('../img/15anos/1.jpg') center/cover; color: white; }
+.subtitle, .tag { text-transform: uppercase; letter-spacing: .12rem; font-weight: 700; color: #d4af37; }
+.hero h1 { font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 800; line-height: 1; color: #f8fafc; }
+.hero .lead { max-width: 760px; font-size: 1.25rem; margin: 1.5rem 0; color: #cbd5e1; }
+.intro { max-width: 820px; margin-bottom: 3rem; }
+.intro h2, .sessao h2 { color: #d4af37; font-weight: 800; }
+.sessao { background: #16161c; border-radius: 28px; padding: 2rem; margin: 2rem 0; box-shadow: 0 20px 50px rgba(0,0,0,.6); border: 1px solid rgba(255, 255, 255, 0.05); }
+.sessao p { font-size: 1.05rem; color: #94a3b8; }
+.carousel img { height: 520px; width: 100%; object-fit: contain; border-radius: 24px; }
+.carousel-inner { background: #0a0a0c; }
+.audio-player { width: 100%; margin-top: 1rem; }
+.footer { background: #050506; color: #94a3b8; padding: 30px; text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.15); }
+.hub-page { min-height: 100vh; background: linear-gradient(135deg, #0a0a0c, #1a1a24); }
+.hub-card { max-width: 780px; margin-top: 6rem; background: #16161c; padding: 4rem 2rem; border-radius: 30px; box-shadow: 0 25px 60px rgba(0,0,0,.5); border: 1px solid rgba(212, 175, 55, 0.15); color: #f8fafc; }
+.hub-card h1 { color: #d4af37; }
+.hub-card p { color: #cbd5e1; }
+.btn-primary { background: #d4af37; border-color: #d4af37; color: #0a0a0c; font-weight: 700; }
+.btn-primary:hover { background: #b89047; border-color: #b89047; color: #0a0a0c; }
+.photo-douglas:hover { transform: scale(1.05) rotate(2deg); border-color: rgba(212, 175, 55, 0.6) !important; box-shadow: 0 20px 40px rgba(212, 175, 55, 0.25) !important; }
+@media (max-width: 768px) { .sessao { padding: 1.25rem; } .carousel img { height: 360px; } .hero { text-align: center; } }

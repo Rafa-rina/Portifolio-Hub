@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portfólio - Rafael Fernandes Durães</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #020617;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at top left, rgba(139, 92, 246, 0.35), transparent 40%),
+                radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.25), transparent 40%);
+            z-index: -1;
+        }
+
+        nav {
+            width: 100%;
+            background: rgba(2, 6, 23, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: auto;
+            padding: 18px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo span {
+            color: #8b5cf6;
+        }
+
+        .menu {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: #8b5cf6;
+        }
+
+        .hero {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+        }
+
+        .hero-box {
+            width: 100%;
+            max-width: 1300px;
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            border-radius: 30px;
+            padding: 60px 40px;
+            text-align: center;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 0 50px rgba(139, 92, 246, 0.15);
+        }
+
+        .foto-perfil {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #8b5cf6;
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.45);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, #a78bfa, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitulo {
+            color: #c084fc;
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+
+        .descricao {
+            max-width: 900px;
+            margin: auto;
+            line-height: 1.9;
+            font-size: 1.1rem;
+            color: #dbeafe;
+        }
+
+        .botoes {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primario {
+            background: linear-gradient(135deg, #7c3aed, #2563eb);
+            color: white;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
+        }
+
+        .btn-primario:hover {
+            transform: translateY(-5px);
+        }
+
+        .btn-secundario {
+            border: 1px solid #7c3aed;
+            color: white;
+        }
+
+        .btn-secundario:hover {
+            background: rgba(124, 58, 237, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .btn-relatorio {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.35);
+        }
+
+        .btn-relatorio:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.5);
+            color: white;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: auto;
+            flex-wrap: wrap;
+            padding-top: 15px;
+        }
+
+        .card-actions .btn {
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            padding: 12px 18px;
+            font-size: 0.9rem;
+            border-radius: 10px;
+        }
+
+        .cards {
+            margin-top: 70px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: left;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #8b5cf6;
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.15);
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: #a78bfa;
+        }
+
+        .card p {
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        @media(max-width:900px) {
+
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .foto-perfil {
+                width: 220px;
+                height: 220px;
+            }
+
+            .menu {
+                gap: 15px;
+            }
+        }
+
+        @media(max-width:600px) {
+
+            .menu {
+                display: none;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitulo {
+                font-size: 1rem;
+            }
+
+            .descricao {
+                font-size: 1rem;
+            }
+
+            .hero-box {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                Rafael<span>Dev</span>
+            </a>
+
+            <ul class="menu">
+
+                <li><a href="index.html">Início</a></li>
+
+                <li><a href="Eu.html">Sobre mim</a></li>
+
+                <li><a href="contato.html">Contato</a></li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+    <section class="hero">
+
+        <div class="hero-box">
+
+            <img src="assets/img/rafa.jpg" alt="Rafael Fernandes Durães" class="foto-perfil">
+            <h1>
+                Rafael <span>Fernandes Durães</span>
+            </h1>
+
+            <h2 class="subtitulo">
+                Desenvolvedor Web • 4º Semestre
+            </h2>
+
+            <p class="descricao">
+
+                Olá! Meu nome é Rafael Fernandes Durães,
+                tenho 20 anos e sou apaixonado por tecnologia,
+                programação e desenvolvimento web.
+
+                Este portfólio reúne meus projetos,
+                atividades e evolução acadêmica desenvolvidos no
+                4º semestre, nas aulas de Desenvolvimento Web.
+
+            </p>
+
+            <div class="botoes">
+
+                <a href="Eu.html" class="btn btn-primario">
+                    Sobre mim
+                </a>
+
+                <a href="contato.html" class="btn btn-secundario">
+                    Contato
+                </a>
+
+                <a href="assets/documentos/Relatorio de sesse site  index.pdf" target="_blank" class="btn btn-relatorio">
+                    📄 Relatório Geral
+                </a>
+
+            </div>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>📚 Apresentação</h3>
+
+                    <p>
+                        Primeira atividade da disciplina contendo
+                        apresentação pessoal e introdução ao
+                        Desenvolvimento Web.
+                    </p>
+
+                    <br>
+
+                    <div class="card-actions">
+                        <a href="apresentacao.html" class="btn btn-secundario">
+                            Abrir atividade
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>📝 Listas, Tabelas e Formulários</h3>
+
+                    <p>
+                        Atividade utilizando HTML com criação
+                        de listas, tabelas e formulários.
+                    </p>
+
+                    <br>
+
+                    <div class="card-actions">
+                        <a href="listas.html" class="btn btn-secundario">
+                            Abrir atividade
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>🎬 Menu, Classes, Imagens e Vídeos</h3>
+
+                    <p>
+                        Projeto utilizando menus personalizados,
+                        classes CSS, imagens e vídeos incorporados.
+                    </p>
+
+                    <br>
+
+                    <div class="card-actions">
+                        <a href="menu.html" class="btn btn-secundario">
+                            Abrir atividade
+                        </a>
+                        <a href="assets/documentos/menu classes imagens e videos.pdf" target="_blank" class="btn btn-relatorio">
+                            📄 Relatório
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>🎧 Cards e Áudio</h3>
+
+                    <p>
+                        Atividade contendo cards estilizados,
+                        player de áudio e plano de fundo.
+                    </p>
+
+                    <br>
+
+                    <div class="card-actions">
+                        <a href="cards.html" class="btn btn-secundario">
+                            Abrir atividade
+                        </a>
+                        <a href="assets/documentos/card de musica.pdf" target="_blank" class="btn btn-relatorio">
+                            📄 Relatório
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>📸 Ensaio Fotográfico</h3>
+
+                    <p>
+                        Página desenvolvida com Bootstrap,
+                        carrossel de imagens e player de áudio.
+                    </p>
+
+                    <br>
+
+                    <div class="card-actions">
+                        <a href="fotografia.html" class="btn btn-secundario">
+                            Abrir atividade
+                        </a>
+                        <a href="assets/documentos/ensaio fotografico.pdf" target="_blank" class="btn btn-relatorio">
+                            📄 Relatório
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>🔐 Sistema de Saúde (Login)</h3>
+
+                    <p>
+                        Página de login para acesso ao sistema do hospital,
+                        com validação de matrícula, senha e cargo em JavaScript.
+                    </p>
+
+                    <br>
+
+                    <div class="card-actions">
+                        <a href="login.html" class="btn btn-secundario">
+                            Abrir atividade
+                        </a>
+                        <a href="assets/documentos/tela de login.pdf" target="_blank" class="btn btn-relatorio">
+                            📄 Relatório
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>🎮 GameTECH</h3>
+
+                    <p>
+                        Landing Page de e-commerce gamer com seções de jogos,
+                        utilidades, acessórios e visual gamer moderno.
+                    </p>
+
+                    <br>
+
+                    <div class="card-actions">
+                        <a href="gametech.html" class="btn btn-secundario">
+                            Abrir atividade
+                        </a>
+                        <a href="assets/documentos/gametech.pdf" target="_blank" class="btn btn-relatorio">
+                            📄 Relatório
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>🍧 Dindins Gourmet Dona Socorro</h3>
+
+                    <p>
+                        Landing Page de sobremesas gourmet tradicionais com
+                        vídeo de fundo em loop, galeria lightbox e história afetiva.
+                    </p>
+
+                    <br>
+
+                    <div class="card-actions">
+                        <a href="GELADINHO - DONA SOCORRO/DONA SOCORRO/index_dindins_dona_socorro.html" class="btn btn-secundario">
+                            Abrir atividade
+                        </a>
+                        <a href="assets/documentos/Dona socorro.pdf" target="_blank" class="btn btn-relatorio">
+                            📄 Relatório
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>🏆 Panini - Copa do Mundo 2026</h3>
+
+                    <p>
+                        Página da Copa do Mundo com visualizador de figurinhas raras (Pelé),
+                        tabela interativa de jogos, classificação de grupos e chaveamento eliminatório.
+                    </p>
+
+                    <br>
+
+                    <div class="card-actions">
+                        <a href="copa.html" class="btn btn-secundario">
+                            Abrir atividade
+                        </a>
+                        <a href="assets/documentos/Copa.pdf" target="_blank" class="btn btn-relatorio">
+                            📄 Relatório
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <footer>
+
+                © 2026 Rafael Fernandes Durães •
+                Todos os direitos reservados
+
+            </footer>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>

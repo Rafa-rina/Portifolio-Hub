@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameTECH Reloaded</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #090214;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(9, 2, 20, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 0, 85, 0.15);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #ff0055;
+            text-shadow: 0 0 10px rgba(255, 0, 85, 0.4);
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            margin-left: 25px;
+            transition: .3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #ff0055;
+        }
+
+        .hero {
+            padding: 140px 40px;
+            text-align: center;
+            background: linear-gradient(rgba(15, 2, 28, 0.8), rgba(15, 2, 28, 0.9)), url('assets/img/ARK_2_key_art.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-bottom: 2px solid rgba(255, 0, 85, 0.25);
+            box-shadow: inset 0 -30px 60px rgba(15, 2, 28, 0.95);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .hero span {
+            color: #ff0055;
+            text-shadow: 0 0 12px rgba(255, 0, 85, 0.4);
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 1.2rem;
+            color: #cbd5e1;
+        }
+
+        .section {
+            padding: 80px 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.7rem;
+            margin-bottom: 50px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #150624;
+            border: 1px solid rgba(255, 0, 85, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: .4s;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .card img.product-img {
+            object-fit: contain;
+            background-color: #ffffff;
+            padding: 15px;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .content h3 {
+            font-size: 1.7rem;
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .price {
+            margin-top: 15px;
+            font-size: 1.7rem;
+            font-weight: bold;
+            color: #ff0055;
+            text-shadow: 0 0 8px rgba(255, 0, 85, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #ff0055, #9d4edd);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 0, 85, 0.3);
+            transition: .3s;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #9d4edd, #ff0055);
+            box-shadow: 0 6px 20px rgba(157, 78, 221, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .combo {
+            background: linear-gradient(135deg, rgba(255, 0, 85, 0.1), rgba(157, 78, 221, 0.1));
+            border-top: 1px solid rgba(255, 0, 85, 0.15);
+            border-bottom: 1px solid rgba(157, 78, 221, 0.15);
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .combo-box {
+            max-width: 800px;
+            margin: auto;
+            background: #150624;
+            padding: 50px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 0, 85, 0.2);
+            box-shadow: 0 0 35px rgba(255, 0, 85, 0.25);
+        }
+
+        .combo h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .combo p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            margin-bottom: 25px;
+        }
+
+        .combo-price {
+            font-size: 4rem;
+            color: #ff0055;
+            font-weight: bold;
+            text-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
+            margin-bottom: 25px;
+        }
+
+        footer {
+            background: rgba(9, 2, 20, 0.95);
+            border-top: 1px solid rgba(255, 0, 85, 0.15);
+            padding: 35px;
+            text-align: center;
+            margin-top: 40px;
+            color: #94a3b8;
+        }
+
+        @media(max-width:768px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .combo-price {
+                font-size: 3rem;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Game<span>TECH</span></div>
+
+        <nav>
+            <a href="index.html" style="color: #ff0055; font-weight: bold;">← Voltar ao Portfólio</a>
+            <a href="#games">Games</a>
+            <a href="#acessorios">Acessórios</a>
+            <a href="#utilidades">Utilidades</a>
+            <a href="#combo">Combo</a>
+            <a href="assets/documentos/gametech.pdf" target="_blank" style="color: #ffd500; font-weight: bold; margin-left: 25px;">📄 Relatório</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Universo <span>Gamer</span></h1>
+        <p>
+            Destaque da Semana: <strong>Ark 2</strong>. Descubra os melhores jogos, acessórios premium e equipamentos gamers para elevar sua experiência ao próximo nível.
+        </p>
+    </section>
+
+    <section class="section" id="games">
+        <h2 class="section-title">Jogos em Destaque</h2>
+
+        <div class="grid">
+
+            <div class="card">
+                <img src="assets/img/ARK_2_key_art.webp" alt="Ark 2">
+                <div class="content">
+                    <h3>Ark 2</h3>
+                    <p>
+                        Sobreviva ao passado e conquiste o futuro em uma experiência de sobrevivência pré-histórica épica de tirar o fôlego.
+                    </p>
+                    <div class="price">R$ 199,90</div>
+                    <button>Comprar</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="assets/img/images.webp">
+                <div class="content">
+                    <h3>Minecraft</h3>
+                    <p>
+                        Explore mundos infinitos, construa estruturas épicas e sobreviva em aventuras ilimitadas.
+                    </p>
+                    <div class="price">R$ 99,90</div>
+                    <button>Comprar</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="assets/img/images.jpg">
+                <div class="content">
+                    <h3>Subnautica 2</h3>
+                    <p>
+                        Mergulhe em oceanos alienígenas repletos de mistérios, criaturas gigantes e exploração extrema.
+                    </p>
+                    <div class="price">R$ 249,90</div>
+                    <button>Comprar</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="assets/img/Fruina.jpg">
+                <div class="content">
+                    <h3>Genshin Impact</h3>
+                    <p>
+                        Viaje pelo mundo mágico de Teyvat e desbloqueie heróis incríveis em batalhas épicas.
+                    </p>
+                    <div class="price">FREE TO PLAY</div>
+                    <button>Jogar Agora</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section" id="acessorios">
+        <h2 class="section-title">Acessórios Gamers</h2>
+
+        <div class="grid">
+
+            <div class="card">
+                <img class="product-img"
+                    src="https://cdn.leroymerlin.com.br/products/cadeira_gamer_snake_lancaster_vermelha_cgf001_v_1571685860_8a54_600x600.jpg">
+                <div class="content">
+                    <h3>Cadeira Gamer Lancaster</h3>
+                    <p>
+                        Conforto premium para longas gameplays, ergonomia profissional e reclinação ajustável.
+                    </p>
+                    <div class="price">R$ 989,90</div>
+                    <button>Comprar Cadeira</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section" id="utilidades">
+        <h2 class="section-title">Utilidades</h2>
+
+        <div class="grid">
+
+            <div class="card">
+                <img class="product-img"
+                    src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcR-dDuhP9jPXEwZZ7y-snrjh5TO1bxIGCwHVdzxsav6ye_UpB69Ua4VSHgwAjbRsgWNwtW8e5LYl4P1HGwhv9Cft972XmvKLK5fkJJlncv9-H6O6SXuOoJlpXb2WuY62Ncjjfvq9SrXaw&usqp=CAc">
+                <div class="content">
+                    <h3>Suporte Gamer BG500</h3>
+                    <p>
+                        Sistema avançado de refrigeração com RGB e suporte ajustável para notebook gamer.
+                    </p>
+                    <div class="price">R$ 179,90</div>
+                    <button>Equipar Setup</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="combo" id="combo">
+
+        <div class="combo-box">
+
+            <h2>🔥 Combo Completo GameTECH</h2>
+
+            <p>
+                Minecraft + Subnautica 2 + Cadeira Gamer + Suporte BG500
+            </p>
+
+            <div class="combo-price">
+                R$ 1.199,90
+            </div>
+
+            <button>Comprar Combo</button>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <p>
+            © 2026 GameTECH - Projeto Acadêmico CEUB
+        </p>
+    </footer>
+
+</body>
+
+</html>
